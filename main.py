@@ -46,6 +46,10 @@ try:
     driver.get(url)
     time.sleep(1)
     input_boxes = driver.find_elements(By.TAG_NAME, 'input')
+    while len(input_boxes) <= 5:
+        time.sleep(1.5)
+        print(Fore.YELLOW + "Waiting for reroute to register page...")
+        input_boxes = driver.find_elements(By.TAG_NAME, 'input')
 
     print(Fore.YELLOW + "Registering for classes...")
     print("\n")
@@ -63,6 +67,8 @@ try:
     
 finally:
     print(Fore.GREEN + "Completed Registration...")
+    # print(Fore.GREEN + "Press ENTER to Close Browser...")
+    # input() # Wait for input to close browser
     print(Fore.GREEN + "Closing Browser...")
     print(Fore.RESET)
     driver.quit()
