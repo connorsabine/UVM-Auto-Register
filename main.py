@@ -6,9 +6,8 @@ import time
 
 
 # inital variables
-# windows_user_data_dir = r'C:\Users\conno\AppData\Local\Google\Chrome\User Data'
-# mac_user_data_dir = r'/Users/connorsabine/Library/Application Support/Google/Chrome'
-
+# user_data_dir = r'C:\Users\conno\AppData\Local\Google\Chrome\User Data' # windows
+user_data_dir = r'/Users/connorsabine/Library/Application Support/Google/Chrome' # mac
 profile_name = 'Default'
 url = 'https://uvm-register-mock.replit.app' # Registrar's website URL
 crns = [11597,10639,10100,11941,12940] # CRNs to enter into the form
@@ -28,16 +27,18 @@ header = """
 # print header
 print(Fore.GREEN + header + "\n")
 print(Fore.LIGHTRED_EX + "Class Registration Numbers:")
-for i, crn in enumerate(crns):
-    print(Fore.LIGHTRED_EX + "CRN", i+1, ":", crn)
+crn_string = ""
+for crn in crns:
+    crn_string += str(crn) + " "
+print(crn_string)
 print("\n")
 
 
 # init webdriver with options
 chrome_options = Options()
 chrome_options.add_argument("--remote-debugging-port=9222")
-# chrome_options.add_argument(f"user-data-dir={windows_user_data_dir}")
-# chrome_options.add_argument(f"profile-directory={profile_name}")
+chrome_options.add_argument(f"user-data-dir={user_data_dir}")
+chrome_options.add_argument(f"profile-directory={profile_name}")
 driver = webdriver.Chrome(options=chrome_options)
 
 
@@ -47,6 +48,7 @@ try:
     input_boxes = driver.find_elements(By.TAG_NAME, 'input')
 
     print(Fore.YELLOW + "Registering for classes...")
+    print("\n")
 
     # iter through crns and input into form
     for i, number in enumerate(crns):
@@ -60,6 +62,7 @@ try:
     submit_button.click()
     
 finally:
-    print(Fore.GREEN + "Completed Registration.")
+    print(Fore.GREEN + "Completed Registration...")
+    print(Fore.GREEN + "Closing Browser...")
     print(Fore.RESET)
     driver.quit()
