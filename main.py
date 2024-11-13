@@ -6,9 +6,11 @@ import time
 
 
 # inital variables
-user_data_dir = r'C:\Users\conno\AppData\Local\Google\Chrome\User Data'
+windows_user_data_dir = r'C:\Users\conno\AppData\Local\Google\Chrome\User Data'
+mac_user_data_dir = r'/Users/connorsabine/Library/Application Support/Google/Chrome'
+
 profile_name = 'Default'
-url = 'https://ba006969-6d09-499e-bfc6-18961c9254fa-00-36ovu8c3ldxon.picard.replit.dev/' # Registrar's website URL
+url = 'https://uvm-register-mock.replit.app/' # Registrar's website URL
 crns = [11597,10639,10100,11941,12940] # CRNs to enter into the form
 
 
@@ -32,14 +34,15 @@ for i, crn in enumerate(crns):
 
 # init webdriver with options
 chrome_options = Options()
-chrome_options.add_argument(f"user-data-dir={user_data_dir}")
+chrome_options.add_argument("--remote-debugging-port=9222")
+chrome_options.add_argument(f"user-data-dir={windows_user_data_dir}")
 chrome_options.add_argument(f"profile-directory={profile_name}")
 driver = webdriver.Chrome(options=chrome_options)
 
 
 try:
     driver.get(url)
-    time.sleep(1)
+    time.sleep(2)
     input_boxes = driver.find_elements(By.TAG_NAME, 'input')
 
     print(Fore.YELLOW + "Registering for classes...")
