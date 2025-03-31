@@ -1,24 +1,166 @@
 <html lang="en"><head>
-    <meta charset="utf-8">
-    <title>Registration Test</title>
-</head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<body>
-    <header>
-        <h1>Registration Test</h1>
-    </header>
+    <title>Add/Drop/Withdraw Classes: </title>
+    <meta http-equiv="Content-Script-Type" name="Default_Script_Language" content="text/javascript">
+    <script language="JavaScript" type="text/javascript">
+    window.onunload = function() {submitcount=0;}
+    var submitcount=0;
+    function checkSubmit() {
+    if (submitcount == 0)
+       {
+       submitcount++;
+       return true;
+       }
+    else
+       {
+    alert("Your changes have already been submitted.");
+       return false;
+       }
+    }
+    </script>
 
-    <form action="/test.html">
+    </head>
+    <body>
+    <div class="headerwrapperdiv">
+    <div class="pageheaderdiv1">
+    <h1>Student/Faculty Information System (SIS)</h1>
+    <h2>Add/Drop/Withdraw Classes: </h2>
+    <td class="pldefault">
+    </td>
+    </tr>
+    <tr>
+    </tr>
+    </tbody></table>
+    <a name="main_content"></a>
+    </div>
+
+    <div class="pagebodydiv">
+    <form action="/submitted.html" method="post" onsubmit="return checkSubmit()">
+    <div class="infotextdiv"><table class="infotexttable" summary="This layout table contains information that may be helpful in understanding the content and functionality of this page.  It could be a brief set of instructions, a description of error messages, or other special information."><tbody><tr><td class="indefault"><span class="infotext"> <!--<p>Students who are rebuilding their Fall or Spring schedules should <b>not</b> drop all their courses at once as the registration system will interpret this as a desire to withdraw from the University.  One course needs to remain on your schedule at all times.  Once a new course is successfully added then it is OK to drop the final course remaining from the original schedule.</p>-->
+    <input type="hidden" name="term_in" value="202501">
+    <input type="hidden" name="RSTS_IN" value="DUMMY">
+    <input type="hidden" name="assoc_term_in" value="DUMMY">
+    <input type="hidden" name="CRN_IN" value="DUMMY">
+    <input type="hidden" name="start_date_in" value="DUMMY">
+    <input type="hidden" name="end_date_in" value="DUMMY">
+    <input type="hidden" name="SUBJ" value="DUMMY">
+    <input type="hidden" name="CRSE" value="DUMMY">
+    <input type="hidden" name="SEC" value="DUMMY">
+    <input type="hidden" name="LEVL" value="DUMMY">
+    <input type="hidden" name="CRED" value="DUMMY">
+    <input type="hidden" name="GMOD" value="DUMMY">
+    <input type="hidden" name="TITLE" value="DUMMY">
+    <input type="hidden" name="MESG" value="DUMMY">
+    <input type="hidden" name="REG_BTN" value="DUMMY">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+
+    <br>
+    <h3>Add Classes Worksheet</h3>
+    <table class="dataentrytable" summary="Add Classes Data Entry" width="100%">
+    <tbody><tr>
+    <td colspan="10" class="detitle" scope="colgroup"><acronym title="Course Reference Numbers">CRNs</acronym></td>
+    </tr>
+    <tr>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id1"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id1">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id2"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id2">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id3"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id3">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id4"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id4">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id5"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id5">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id6"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id6">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id7"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id7">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id8"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id8">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id9"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id9">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    <td class="dedefault">
+    <input type="hidden" name="RSTS_IN" value="RW">
+    <label for="crn_id10"><span class="fieldlabeltextinvisible">CRN</span></label>
+    <input type="text" name="CRN_IN" size="6" maxlength="5" id="crn_id10">
+    <input type="hidden" name="assoc_term_in" value="">
+    <input type="hidden" name="start_date_in" value="">
+    <input type="hidden" name="end_date_in" value="">
+    <input type="hidden" name="UVM_REQ_WD_IND_IN" value="DUMMY">
+    </td>
+    </tr></tbody></table>
+    <input type="hidden" name="regs_row" value="4">
+    <input type="hidden" name="wait_row" value="0">
+    <input type="hidden" name="add_row" value="10">
     
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-        <input type="text">
-
-        <input type="submit">
-    
+    <br>
+    <input type="submit" name="REG_BTN" value="Submit Changes">
+    <input type="reset" value="Reset">
+    <input type="submit" name="REG_BTN" value="Class Search">
     </form>
-</body>
-</html>
+
+    </body></html>

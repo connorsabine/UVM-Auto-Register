@@ -4,16 +4,29 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
 import time
 
-
-# inital variables
-# user_data_dir = r'C:\Users\conno\AppData\Local\Google\Chrome\User Data' # windows
-user_data_dir = r'/Users/connorsabine/Library/Application Support/Google/Chrome' # mac
+# SET INFO
+production = False
 profile_name = 'Default'
-url = 'https://uvm-register-mock.replit.app' # Registrar's website URL
-crns = [11597,10639,10100,11941,12940] # CRNs to enter into the form
 
 
-# header
+# CRNS
+if production:
+    url = "https://csabine.w3.uvm.edu/"
+    crns = []
+    while True:
+        crn = input("Enter a CRN (or 'done' to finish): ")
+        if crn.lower() == 'done':
+            break
+        if crn.isdigit():
+            crns.append(int(crn))
+        else:
+            print("Invalid CRN. Please enter a numeric value.")
+else:
+    url = "https://csabine.w3.uvm.edu/"
+    crns = [13979, 200, 300, 5006, 7000]
+
+
+# HEADER
 header = """
   _    ___      ____  __           _    _ _______ ____  _____  ______ _____ _____  _____ _______ ______ _____  
  | |  | \ \    / /  \/  |     /\  | |  | |__   __/ __ \|  __ \|  ____/ ____|_   _|/ ____|__   __|  ____|  __ \ 
@@ -24,7 +37,7 @@ header = """
 """
 
 
-# print header
+# PRINT HEADER & CRNS
 print(Fore.GREEN + header + "\n")
 print(Fore.LIGHTRED_EX + "Class Registration Numbers:")
 crn_string = ""
@@ -34,41 +47,37 @@ print(crn_string)
 print("\n")
 
 
-# init webdriver with options
+# INIT WEBDRIVER WITH OPTIONS
 chrome_options = Options()
 chrome_options.add_argument("--remote-debugging-port=9222")
-chrome_options.add_argument(f"user-data-dir={user_data_dir}")
 chrome_options.add_argument(f"profile-directory={profile_name}")
 driver = webdriver.Chrome(options=chrome_options)
 
 
+# RUN PROG
 try:
     driver.get(url)
     time.sleep(1)
-    input_boxes = driver.find_elements(By.TAG_NAME, 'input')
+    input_boxes = driver.find_elements(By.CSS_SELECTOR, "input[type='text'][name='CRN_IN']")
     while len(input_boxes) <= 5:
         time.sleep(1.5)
         print(Fore.YELLOW + "Waiting for reroute to register page...")
-        input_boxes = driver.find_elements(By.TAG_NAME, 'input')
+        input_boxes = driver.find_elements(By.CSS_SELECTOR, "input[type='text'][name='CRN_IN']")
 
     print(Fore.YELLOW + "Registering for classes...")
     print("\n")
 
-    # iter through crns and input into form
     for i, number in enumerate(crns):
         if i < len(input_boxes):
             input_boxes[i].send_keys(str(number))
         else:
             break
 
-    # submit form
-    submit_button = driver.find_element(By.CSS_SELECTOR, "input[type='submit']")
+    submit_button = driver.find_element(By.CSS_SELECTOR, "input[type='submit'][name='REG_BTN'][value='Submit Changes']")
     submit_button.click()
     
 finally:
     print(Fore.GREEN + "Completed Registration...")
-    # print(Fore.GREEN + "Press ENTER to Close Browser...")
-    # input() # Wait for input to close browser
     print(Fore.GREEN + "Closing Browser...")
     print(Fore.RESET)
     driver.quit()
